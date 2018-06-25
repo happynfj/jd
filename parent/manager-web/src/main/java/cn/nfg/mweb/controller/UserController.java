@@ -2,7 +2,6 @@ package cn.nfg.mweb.controller;
 
 import cn.nfj.mservice.UserService;
 import cn.nfj.mservice.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,4 +40,8 @@ public class UserController {
         return "itemList";
     }
 
+    @RequestMapping("/item/form")
+    public String itemForm(){
+        return "itemForm";
+    }
 }

@@ -23,4 +23,9 @@ public class ItemController {
     public TbItem selectItemById(String id){
         return itemService.getItemByID(id);
     }
+
+    @RequestMapping("/item/del")
+    public Object itemUpdate(){
+        return new Result().Success();
+    }
 }

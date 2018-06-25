@@ -50,38 +50,44 @@ layui.use('table', function(){
       ,{fixed: 'right', title:'操作', toolbar: '#barDemo',width:'12%'}
     ]]
   });
+
+    //监听工具条
+    table.on('tool(test)', function(obj){
+      var data = obj.data;
+        if(obj.event === 'del'){
+            layer.confirm('真的删除行么', function(index){
+                obj.del();
+                layer.close(index);
+                $.ajax({
+                    url:'/item/del',
+                    success:function (result) {
+                        if(result.code){
+                            alert("删除成功");
+                        }
+                    }
+                })
+            });
+        } else if(obj.event === 'edit'){
+           /* layer.prompt({
+                formType: 2
+                ,value: data.username
+            }, function(value, index){
+                obj.update({
+                    username: value
+                });
+                layer.close(index);
+            });*/
+
+            layer.open({
+                type: 2,
+                area: ['500px', '600px'],
+                content:'/item/form'//数组第二项即吸附元素选择器或者DOM
+            });
+        }
+    });
+
 });
 
-//监听工具条
-/*table.on('tool(test)', function(obj){
-    alert(123);
-    var data = obj.data;
-    if(obj.event === 'del'){
-        layer.confirm('真的删除行么', function(index){
-            obj.del();
-            layer.close(index);
-            //向服务端发送删除指令
-            $.ajax({
-                url:'',
-                success:function (result) {
-                    if(result.code){
-
-                    }
-                }
-            })
-        });
-    } else if(obj.event === 'edit'){
-        layer.prompt({
-            formType: 2
-            ,value: data.username
-        }, function(value, index){
-            obj.update({
-                username: value
-            });
-            layer.close(index);
-        });
-    }
-});*/
 </script>
 </body>
 </html>
