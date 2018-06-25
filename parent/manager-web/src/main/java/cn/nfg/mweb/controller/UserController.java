@@ -31,4 +31,10 @@ public class UserController {
         return "tree";
     }
 
+    @RequestMapping("/goodsList")
+    public String goodsList(){
+        return "goodsList";
+    }
+
+
 }
