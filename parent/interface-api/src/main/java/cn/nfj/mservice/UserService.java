@@ -1,6 +1,6 @@
-package cn.nfg.mservice;
+package cn.nfj.mservice;
 
-import cn.nfg.mservice.entity.User;
+import cn.nfj.mservice.entity.User;
 
 /**
  * @Auther: Administrator

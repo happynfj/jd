@@ -1,7 +1,7 @@
 package cn.nfg.mweb.controller;
 
-import cn.nfg.mservice.UserService;
-import cn.nfg.mservice.entity.User;
+import cn.nfj.mservice.UserService;
+import cn.nfj.mservice.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class UserController {
-    @Autowired
+
     private UserService userService;
 
     @RequestMapping("/getUser")
@@ -33,8 +33,12 @@ public class UserController {
 
     @RequestMapping("/goodsList")
     public String goodsList(){
-        return "goodsList";
+        return "itemList";
     }
 
+    @RequestMapping("/item/page")
+    public String itemPage(){
+        return "itemList";
+    }
 
 }

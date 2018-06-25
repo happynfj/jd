@@ -1,7 +1,7 @@
 package cn.nfj.mservice.serviceimpl;
 
-import cn.nfg.mservice.UserService;
-import cn.nfg.mservice.entity.User;
+import cn.nfj.mservice.UserService;
+import cn.nfj.mservice.entity.User;
 import org.springframework.stereotype.Service;
 
 /**

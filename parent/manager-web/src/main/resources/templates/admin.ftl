@@ -138,7 +138,7 @@
 					element.tabAdd('docDemoTabBrief', {
 					title: '增加商品',
 					id: '12',
-					content: '<iframe src="http://localhost:8011/goodsList" id="myiframe" width="100%"  frameborder="0"></iframe>'
+					content: '<iframe src="http://localhost:8011/item/page" id="myiframe" width="100%"  frameborder="0"></iframe>'
 					});
 					element.tabChange('docDemoTabBrief', '12');
 					}
@@ -154,7 +154,7 @@
 					element.tabAdd('docDemoTabBrief', {
 					title: '商品列表',
 					id: '13',
-					content: '<iframe id = "myiframe" frameborder="0" width="100%" src="http://localhost:8011/goodsList"></iframe>'
+					content: '<iframe id = "myiframe" frameborder="0" width="100%" src="http://localhost:8011/item/page"></iframe>'
 					});
 					}
 					element.tabChange('docDemoTabBrief', '13');

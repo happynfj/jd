@@ -1,4 +1,4 @@
-package cn.nfg.mservice.entity;
+package cn.nfj.mservice.entity;
 
 import java.io.Serializable;
 

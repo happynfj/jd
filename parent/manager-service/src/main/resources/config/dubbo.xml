@@ -14,5 +14,5 @@
    <!-- <dubbo:annotation package="com.boot.service.impl"/>-->
     <dubbo:protocol name="dubbo" port="20880"/>
     <!--声明对外暴露的服务-->
-    <dubbo:service interface="cn.nfg.mservice.UserService" ref="userServiceImpl" />
+    <dubbo:service interface="cn.nfj.mservice.ItemService" ref="itemServiceImpl" />
 </beans>

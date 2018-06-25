@@ -9,5 +9,5 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
     <!--声明服务引用，与服务声明接口类型一致-->
 
-    <dubbo:reference interface="cn.nfg.mservice.UserService" id="userService" />
+    <dubbo:reference interface="cn.nfj.mservice.ItemService" id="itemService" />
 </beans>
