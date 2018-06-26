@@ -40,7 +40,7 @@ public class Result implements Serializable {
     }
 
 
-    public HashMap layuiPage(List list, long count) {
+    public HashMap page(List list, long count) {
         this.map.put("data", list);
         this.map.put("count", count);
         this.map.put("code", 0);

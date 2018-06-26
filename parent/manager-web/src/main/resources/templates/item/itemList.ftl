@@ -45,8 +45,8 @@ layui.use('table', function(){
       ,{field:'num', title:'库存数量', width:'5%'}
       ,{field:'barcode', title:'条形码', width:'10%'}
       ,{field:'status', title:'状态', width:'5%'}
-      ,{field:'created', title:'创建日期', width:'12%', sort: true}
-      ,{field:'updated', title:'更新日期', width:'12%', sort: true}
+      ,{field:'createTime', title:'创建日期', width:'12%', sort: true}
+      ,{field:'updateTime', title:'更新日期', width:'12%', sort: true}
       ,{fixed: 'right', title:'操作', toolbar: '#barDemo',width:'12%'}
     ]]
   });
@@ -62,7 +62,7 @@ layui.use('table', function(){
                     url:'/item/del',
                     success:function (result) {
                         if(result.code){
-                            alert("删除成功");
+                           // alert("删除成功");
                         }
                     }
                 })
@@ -81,7 +81,7 @@ layui.use('table', function(){
             layer.open({
                 type: 2,
                 area: ['500px', '600px'],
-                content:'/item/form'//数组第二项即吸附元素选择器或者DOM
+                content:'/item/pageForm'//数组第二项即吸附元素选择器或者DOM
             });
         }
     });

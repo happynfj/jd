@@ -66,7 +66,7 @@
 					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 					<ul class="layui-nav layui-nav-tree" lay-filter="test">
 						<li class="layui-nav-item layui-nav-itemed">
-							<a class="" href="javascript:;">所有商品</a>
+							<a class="" href="javascript:;">商品管理</a>
 							<dl class="layui-nav-child">
 								<dd>
 									<a id="goodsAdd" href="javascript:;">新增商品</a>
@@ -79,6 +79,19 @@
 								</dd>
 							</dl>
 						</li>
+
+                        <li class="layui-nav-item">
+                            <a class="" href="javascript:;">系统管理</a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a id="goodsAdd" href="javascript:;">用户管理</a>
+                                </dd>
+                                <dd>
+                                    <a id="goodsList" href="javascript:;">角色管理</a>
+                                </dd>
+                            </dl>
+                        </li>
+
 						<li class="layui-nav-item">
 							<a href="javascript:;">解决方案</a>
 							<dl class="layui-nav-child">
@@ -107,18 +120,15 @@
 				<!--选项卡-->
 				<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" lay-allowClose="true">
 					<ul class="layui-tab-title">
-						<#--<li class="layui-this">网站设置</li>
-						<li>用户管理</li>
-						<li>权限分配</li>-->
+                        <li class="layui-this">后台主页</li>
 					</ul>
 					<div class="layui-tab-content">
-						<#-- <div class="layui-tab-item layui-show">
-						 </div>
-							<div class="layui-tab-item">内容2</div>
-							<div class="layui-tab-item">内容3</div>
-						</div>-->
+                        <div class="layui-tab-item layui-show">
+                            <iframe src="http://localhost:8011/welcome" id="myiframe3" width="100%"  frameborder="0"></iframe>
+						</div>
 					</div>
 				</div>
+
 			</div>
 
 			<div class="layui-footer">
@@ -138,11 +148,11 @@
 					element.tabAdd('docDemoTabBrief', {
 					title: '增加商品',
 					id: '12',
-					content: '<iframe src="http://localhost:8011/item/page" id="myiframe" width="100%"  frameborder="0"></iframe>'
+					content: '<iframe src="http://localhost:8011/item/pageList" id="myiframe1" width="100%"  frameborder="0"></iframe>'
 					});
 					element.tabChange('docDemoTabBrief', '12');
 					}
-					var ifm= document.getElementById("myiframe");
+					var ifm= document.getElementById("myiframe1");
 					ifm.height=document.documentElement.clientHeight;
 				});
 				
@@ -154,14 +164,21 @@
 					element.tabAdd('docDemoTabBrief', {
 					title: '商品列表',
 					id: '13',
-					content: '<iframe id = "myiframe" frameborder="0" width="100%" src="http://localhost:8011/item/page"></iframe>'
+					content: '<iframe id = "myiframe2" frameborder="0" width="100%" src="http://localhost:8011/item/pageList"></iframe>'
 					});
 					}
 					element.tabChange('docDemoTabBrief', '13');
-					var ifm= document.getElementById("myiframe");
+					var ifm= document.getElementById("myiframe2");
 					ifm.height=document.documentElement.clientHeight;
 				});
 			});
 		</script>
 	</body>
+
+<script>
+	$(function () {
+        var ifm= document.getElementById("myiframe3");
+        ifm.height=document.documentElement.clientHeight;
+    });
+</script>
 </html>

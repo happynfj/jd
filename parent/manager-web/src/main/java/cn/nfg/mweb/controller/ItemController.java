@@ -9,23 +9,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("item")
 public class ItemController {
 
     @Autowired
     private ItemService itemService;
 
-    @RequestMapping("/item/list")
+    @RequestMapping("list")
     public Object getItemList(Integer page, Integer limit){
         return  itemService.getItemList(page,limit);
     }
 
-    @RequestMapping("/selectItemById")
+    @RequestMapping("/page/{id}")
     public TbItem selectItemById(String id){
         return itemService.getItemByID(id);
     }
 
-    @RequestMapping("/item/del")
-    public Object itemUpdate(){
+    @RequestMapping("del")
+    public Object itemDel(String id){
+        itemService.itemDel(id);
+        return new Result().Success();
+    }
+
+    @RequestMapping("save")
+    public Object itemSave(TbItem item){
+        itemService.itemSave(item);
         return new Result().Success();
     }
 }

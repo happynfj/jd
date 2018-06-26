@@ -15,4 +15,8 @@ public interface ItemService {
     TbItem getItemByID(String id);
 
     HashMap getItemList(int page, int rows);
+
+    void itemDel(String id);
+
+    void itemSave(TbItem item);
 }

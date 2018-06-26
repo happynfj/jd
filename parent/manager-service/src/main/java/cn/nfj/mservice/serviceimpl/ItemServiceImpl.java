@@ -1,9 +1,9 @@
 package cn.nfj.mservice.serviceimpl;
 
 import cn.nfj.mservice.ItemService;
-import cn.nfj.mservice.entity.DataGridResult;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.entity.TbItemExample;
+import cn.nfj.mservice.vo.TbItemVo;
 import cn.nfj.mservice.mapper.TbItemMapper;
 import cn.nfj.mservice.util.Result;
 import com.github.pagehelper.PageHelper;
@@ -11,6 +11,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public TbItem getItemByID(String id) {
         TbItem tbItem = itemMapper.selectByPrimaryKey(Long.valueOf(id));
-         return tbItem;
+        return tbItem;
     }
 
     @Override
@@ -38,11 +39,33 @@ public class ItemServiceImpl implements ItemService{
         //执行查询
         TbItemExample example = new TbItemExample();
         List<TbItem> list = itemMapper.selectByExample(example);
-        //创建一个返回值对象
+        //格式化时间
+        List<TbItemVo> voList = TbItemToVo(list);
         //取分页结果
-        PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+        PageInfo<TbItemVo> pageInfo = new PageInfo<>(voList);
         //取总记录数
         long count = pageInfo.getTotal();
-        return new Result().layuiPage(list,count);
+        return new Result().page(voList, count);
+    }
+
+    @Override
+    public void itemDel(String id) {
+        itemMapper.deleteByPrimaryKey(Long.valueOf(id));
+    }
+
+    @Override
+    public void itemSave(TbItem item) {
+
+    }
+
+    /**
+     * itemList---->voList
+     */
+    private List<TbItemVo> TbItemToVo(List<TbItem> list) {
+        List<TbItemVo> voList = new ArrayList<TbItemVo>();
+        for (TbItem item : list) {
+            voList.add(TbItemVo.adapt(item));
+        }
+        return voList;
     }
 }

@@ -20,6 +20,7 @@
 
 
 	<dependencies>
+		<!--公共接口依赖-->
 		<dependency>
 			<groupId>cn.nfj</groupId>
 			<artifactId>interface-api</artifactId>
@@ -53,6 +54,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
+
+		<!--安全认证框架-->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>-->
 	</dependencies>
 
 	<build>
