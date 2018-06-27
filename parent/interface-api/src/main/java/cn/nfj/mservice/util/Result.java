@@ -21,10 +21,11 @@ public class Result implements Serializable {
         return this;
     }
 
-    public HashMap Success() {
-        this.map.put("code", 1);
-        this.map.put("message", "");
-        return this.map;
+    public static HashMap Success() {
+        HashMap map = new HashMap();
+        map.put("code", 1);
+        map.put("message", "");
+        return map;
     }
 
     public HashMap Error(String msg) {

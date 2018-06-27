@@ -42,17 +42,16 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table schema="" tableName="tb_content"></table>
-		<table schema="" tableName="tb_content_category"></table>
-		<table schema="" tableName="tb_item"></table>
-		<table schema="" tableName="tb_item_cat"></table>
-		<table schema="" tableName="tb_item_desc"></table>
-		<table schema="" tableName="tb_item_param"></table>
-		<table schema="" tableName="tb_item_param_item"></table>
-		<table schema="" tableName="tb_order"></table>
-		<table schema="" tableName="tb_order_item"></table>
+		<table schema="" tableName="sys_acl"></table>
+		<table schema="" tableName="sys_acl_module"></table>
+		<!--<table schema="" tableName="sys_dept"></table>-->
+		<table schema="" tableName="sys_log"></table>
+		<table schema="" tableName="sys_role_acl"></table>
+		<table schema="" tableName="sys_role_user"></table>
+		<table schema="" tableName="sys_user"></table>
+		<!--<table schema="" tableName="tb_order_item"></table>
 		<table schema="" tableName="tb_order_shipping"></table>
-		<table schema="" tableName="tb_user"></table>
+		<table schema="" tableName="tb_user"></table>-->
 
 	</context>
 </generatorConfiguration>

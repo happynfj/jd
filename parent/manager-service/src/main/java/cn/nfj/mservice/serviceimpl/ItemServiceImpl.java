@@ -3,13 +3,14 @@ package cn.nfj.mservice.serviceimpl;
 import cn.nfj.mservice.ItemService;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.entity.TbItemExample;
-import cn.nfj.mservice.vo.TbItemVo;
+import cn.nfj.mservice.dto.TbItemDto;
 import cn.nfj.mservice.mapper.TbItemMapper;
 import cn.nfj.mservice.util.Result;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,9 +41,9 @@ public class ItemServiceImpl implements ItemService{
         TbItemExample example = new TbItemExample();
         List<TbItem> list = itemMapper.selectByExample(example);
         //格式化时间
-        List<TbItemVo> voList = TbItemToVo(list);
+        List<TbItemDto> voList = TbItemToVo(list);
         //取分页结果
-        PageInfo<TbItemVo> pageInfo = new PageInfo<>(voList);
+        PageInfo<TbItemDto> pageInfo = new PageInfo<>(voList);
         //取总记录数
         long count = pageInfo.getTotal();
         return new Result().page(voList, count);
@@ -61,10 +62,10 @@ public class ItemServiceImpl implements ItemService{
     /**
      * itemList---->voList
      */
-    private List<TbItemVo> TbItemToVo(List<TbItem> list) {
-        List<TbItemVo> voList = new ArrayList<TbItemVo>();
+    private List<TbItemDto> TbItemToVo(List<TbItem> list) {
+        List<TbItemDto> voList = new ArrayList<TbItemDto>();
         for (TbItem item : list) {
-            voList.add(TbItemVo.adapt(item));
+            voList.add(TbItemDto.adapt(item));
         }
         return voList;
     }
