@@ -28,6 +28,14 @@ public class Result implements Serializable {
         return map;
     }
 
+    public static HashMap Success(Object object) {
+        HashMap map = new HashMap();
+        map.put("code", 1);
+        map.put("message", "");
+        map.put("data", object);
+        return map;
+    }
+
     public HashMap Error(String msg) {
         this.map.put("code", -1);
         this.map.put("message", msg);

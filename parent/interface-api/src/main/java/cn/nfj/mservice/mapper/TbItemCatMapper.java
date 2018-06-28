@@ -3,6 +3,7 @@ package cn.nfj.mservice.mapper;
 
 import cn.nfj.mservice.entity.TbItemCat;
 import cn.nfj.mservice.entity.TbItemCatExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,11 +22,13 @@ public interface TbItemCatMapper {
 
     TbItemCat selectByPrimaryKey(Long id);
 
- /*   int updateByExampleSelective(@Param("record") TbItemCat record, @Param("example") TbItemCatExample example);
+    int updateByExampleSelective(@Param("record") TbItemCat record, @Param("example") TbItemCatExample example);
 
-    int updateByExample(@Param("record") TbItemCat record, @Param("example") TbItemCatExample example);*/
+    int updateByExample(@Param("record") TbItemCat record, @Param("example") TbItemCatExample example);
 
     int updateByPrimaryKeySelective(TbItemCat record);
 
     int updateByPrimaryKey(TbItemCat record);
+
+    List<TbItemCat> getAll();
 }

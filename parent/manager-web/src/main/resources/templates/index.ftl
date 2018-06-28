@@ -8,7 +8,6 @@
 		<title>layout 后台大布局 - Layui</title>
 		<link rel="stylesheet" href="../css/layui.css">
 		<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-        <script src="../layui.js"></script>
 	</head>
 
 	<body class="layui-layout-body">
@@ -64,15 +63,15 @@
 			<div class="layui-side layui-bg-black">
 				<div class="layui-side-scroll">
 					<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-					<ul class="layui-nav layui-nav-tree" lay-filter="test">
+					<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
 						<li class="layui-nav-item layui-nav-itemed">
 							<a class="" href="javascript:;">商品管理</a>
 							<dl class="layui-nav-child">
 								<dd>
-									<a id="goodsAdd" href="javascript:;">新增商品</a>
+									<a id="goodsAdd" href="javascript:;" data-url="http://localhost:8011/item/pageList" data-id='1' data-text="新增商品">新增商品</a>
 								</dd>
 								<dd>
-									<a id="goodsList" href="javascript:;">商品列表</a>
+									<a id="goodsList" href="javascript:;" data-url="http://localhost:8011/item/pageList" data-id='2' data-text="商品列表">商品列表</a>
 								</dd>
 								<dd>
 									<a href="javascript:;">规格参数</a>
@@ -118,13 +117,13 @@
 
 			<div class="layui-body">
 				<!--选项卡-->
-				<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" lay-allowClose="true">
+				<div class="layui-tab layui-tab-brief" lay-filter="tabF" lay-allowClose="true">
 					<ul class="layui-tab-title">
                         <li class="layui-this">后台主页</li>
 					</ul>
 					<div class="layui-tab-content">
                         <div class="layui-tab-item layui-show">
-                            <iframe src="http://localhost:8011/welcome" id="myiframe3" width="100%"  frameborder="0"></iframe>
+							<#--<iframe id = "myiframe" src="http://localhost:8011/welcome" width="100%" height="100%" name="iframe" scrolling="auto" class="iframe" framborder="no"></iframe>-->
 						</div>
 					</div>
 				</div>
@@ -136,7 +135,7 @@
 				© layui.com - 底部固定区域
 			</div>
 		</div>
-		<script>
+		<#--<script>
 			layui.use('element', function() {
 				var element = layui.element;
 				$('#goodsAdd').click(function(){
@@ -172,13 +171,16 @@
 					ifm.height=document.documentElement.clientHeight;
 				});
 			});
-		</script>
+		</script>-->
+
 	</body>
 
-<script>
+<#--<script>
 	$(function () {
-        var ifm= document.getElementById("myiframe3");
+        var ifm= document.getElementById("myiframe");
         ifm.height=document.documentElement.clientHeight;
     });
-</script>
+</script>-->
+    <script src="../layui.js"></script>
+    <script src="../js/main.js"></script>
 </html>

@@ -9,6 +9,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
 	var mainMask = $('.main-mask');
 	//监听导航点击
 	element.on('nav(leftNav)', function(elem) {
+		alert(123);
 		var navA = $(elem).find('a');
 		var id = navA.attr('data-id');
 		var url = navA.attr('data-url');
