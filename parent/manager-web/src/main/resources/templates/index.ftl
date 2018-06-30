@@ -135,52 +135,9 @@
 				© layui.com - 底部固定区域
 			</div>
 		</div>
-		<#--<script>
-			layui.use('element', function() {
-				var element = layui.element;
-				$('#goodsAdd').click(function(){
-					if ( $("li[lay-id='12']").length > 0 ) {
-						//选中选项卡
-					element.tabChange('docDemoTabBrief', '12');
-					} else{
-						//增加选项卡
-					element.tabAdd('docDemoTabBrief', {
-					title: '增加商品',
-					id: '12',
-					content: '<iframe src="http://localhost:8011/item/pageList" id="myiframe1" width="100%"  frameborder="0"></iframe>'
-					});
-					element.tabChange('docDemoTabBrief', '12');
-					}
-					var ifm= document.getElementById("myiframe1");
-					ifm.height=document.documentElement.clientHeight;
-				});
-				
-				$('#goodsList').click(function(){
-					//判断选项卡是否存在
-					if ( $("li[lay-id='13']").length > 0 ) {
-					} else{
-						//增加选项卡
-					element.tabAdd('docDemoTabBrief', {
-					title: '商品列表',
-					id: '13',
-					content: '<iframe id = "myiframe2" frameborder="0" width="100%" src="http://localhost:8011/item/pageList"></iframe>'
-					});
-					}
-					element.tabChange('docDemoTabBrief', '13');
-					var ifm= document.getElementById("myiframe2");
-					ifm.height=document.documentElement.clientHeight;
-				});
-			});
-		</script>-->
 
 	</body>
 
-<#--<script>
-	$(function () {
-        var ifm= document.getElementById("myiframe");
-        ifm.height=document.documentElement.clientHeight;
-    });
-</script>-->
     <script src="../layui.js"></script>
     <script src="../js/main.js"></script>
 </html>
