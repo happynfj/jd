@@ -31,7 +31,7 @@ public class PageController {
         return "item/list";
     }
 
-    @RequestMapping("/item/pageForm")
+    @RequestMapping("/item/pageEdit")
     public String itemForm(){
         return "item/edit";
     }

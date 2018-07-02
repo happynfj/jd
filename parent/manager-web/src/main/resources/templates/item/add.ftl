@@ -25,7 +25,7 @@
 
 <body>
 <div class="layui-form-item layui-btn-sm" style="margin-left: 15px">
-    <button class="layui-btn" id="catBtn" data-url="/itemcat/tree">一个标准的按钮</button>
+    <button class="layui-btn" id="catBtn" data-url="/itemcat/tree">商品类目</button>
     <input type="hidden"/>
 </div>
 

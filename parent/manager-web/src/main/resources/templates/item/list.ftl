@@ -15,7 +15,7 @@
 
 <table id="test" lay-filter="test">
     <form class="layui-form" action="">
-        <button class="layui-btn" id="gobtn" data-url="/item/pageForm" data-id="1">增加</button>
+        <button class="layui-btn" id="gobtn" data-url="/item/pageAdd" data-id="1">增加</button>
         <div class="layui-inline" style="margin-left: 1320px">
             <input type="text" name="title"  placeholder="请输入标题" autocomplete="off"
                    class="layui-input">
