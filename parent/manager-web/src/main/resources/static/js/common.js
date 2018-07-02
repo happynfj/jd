@@ -16,8 +16,10 @@ function openLayer(url) {
         yes: function (index, layero) {
             var body = layer.getChildFrame('body', index);//建立父子联系
             var inputList = body.find('input');
-            var iptVal = $(inputList[0]).val();
-            $('#goodsCat').val(iptVal);
+            var catName = $(inputList[0]).val();
+            var catId =  $(inputList[0]).attr("data-id");
+            $('#goodsCat').val(catName);
+            $('#goodsCatId').val(catId);
             layer.close(index);
         }
     });
@@ -26,7 +28,7 @@ function openLayer(url) {
 //监听跳转按钮事件
 $('#gobtn').click(function () {
     var url=$(this).attr('data-url');
-    var id = $(this).attr('data-id');
-    window.location.href=url+"?id="+id;
+    var id = $(this).attr('id');
+    window.location.href=url+"?id="+id+"&isEdit=0";
     return false;
 });

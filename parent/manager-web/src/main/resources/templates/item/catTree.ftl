@@ -24,7 +24,7 @@
 
 <body>
 <form class="layui-form" action="">
-    <input type="hidden"  id="ipt" value="123">
+    <input type="hidden"  id="ipt" value="123" data-id="">
     <div class="layui-form-item">
         <ul id="ztree1" class="ztree"></ul>
     </div>
@@ -75,6 +75,7 @@
         //ztree点击时间
         function handlerClick(e,treeId,treeNode){
             $('#ipt').val(treeNode.name);
+            $('#ipt').attr("data-id",treeNode.id);
         }
     });
 </script>

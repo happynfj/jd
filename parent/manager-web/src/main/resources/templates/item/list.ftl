@@ -39,7 +39,7 @@
             , url: '/item/list'
             //开启分页
             , page: true
-            , limit: 30
+            , limit: 20
             //表头工具栏
             /*, toolbar: '#toolbarDemo'*/
             , cols: [[
@@ -60,7 +60,7 @@
 
         //监听工具条
         table.on('tool(test)', function (obj) {
-            alert(123);
+            console.log(JSON.stringify(obj));
             var data = obj.data;
             if (obj.event === 'del') {
                 layer.confirm('真的删除行么', function (index) {
@@ -76,21 +76,11 @@
                     })
                 });
             } else if (obj.event === 'edit') {
-                /* layer.prompt({
-                     formType: 2
-                     ,value: data.username
-                 }, function(value, index){
-                     obj.update({
-                         username: value
-                     });
-                     layer.close(index);
-                 });*/
-
-                layer.open({
-                    type: 2,
-                    area: ['500px', '600px'],
-                    content: '/item/pageForm'//数组第二项即吸附元素选择器或者DOM
-                });
+                var id = obj.data.id;
+                var url = "/item/pageAdd";
+                var isEdit = 1;
+                window.location.href=url+"?id="+id+"&isEdit="+isEdit;
+                return false;
             }
         });
     });

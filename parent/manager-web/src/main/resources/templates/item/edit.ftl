@@ -9,7 +9,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-
+    <link rel="stylesheet" type="text/css" href="../css/ztree/zTreeStyle.css"/>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../jquery.ztree.all.js"></script>
     <link rel="stylesheet" href="../css/layui.css">
 
     <style>
@@ -18,151 +20,165 @@
         }
     </style>
 </head>
+
+<ul id="ztree1" class="ztree"></ul>
+
 <body>
+
+<#--<div class="layui-form-item layui-btn-sm" style="margin-left: 15px">
+    <button class="layui-btn" id="catBtn" data-url="/itemcat/tree">商品类目</button>
+    <input type="hidden"/>
+</div>-->
 
 <form class="layui-form layui-form-pane1" action="" lay-filter="first">
 
-    <div class="layui-form-item layui-btn-sm" style="margin-left: 15px">
-        <button class="layui-btn">一个标准的按钮</button>
-    </div>
+    <div class="layui-tab">
+        <div class="layui-tab-title">
+            <li><a href="/item/pageList">商品列表</a></li>
+            <li class="layui-this">编辑商品</li>
+        </div>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item"></div>
+            <div class="layui-tab-item layui-show">
 
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品类目</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="goodsCat"  required placeholder="请选择类目" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline">
+                        <button class="layui-btn" id="catBtn" data-url="/itemcat/tree" name="cid">商品类目</button>
+                    </div>
+                    <input type="hidden" id="goodsCatId" name="cid"/>
+                </div>
 
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品标题</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" lay-verify="required|title" placeholder="请输入标题"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品卖点</label>
+                    <div class="layui-input-block">
+                        <input type="tel" name="sellPoint" lay-verify="required|title"  placeholder="请输入卖点"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="price" lay-verify="required|number"  placeholder="请输入价格"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
 
-    <div class="layui-form-item">
-        <label class="layui-form-label">输入框</label>
-        <div class="layui-input-block">
-            <input type="text" name="title" lay-verify="required|title" required placeholder="请输入标题" autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">手机</label>
-        <div class="layui-input-block">
-            <input type="tel" name="phone" lay-verify="required|number" lay-verType="tips" autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">邮箱</label>
-        <div class="layui-input-block">
-            <input type="email" name="email" lay-verify="email" lay-verType="alert" autocomplete="off"
-                   class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
-        <div class="layui-input-inline">
-            <input type="password" name="password" lay-verify="required|pass" placeholder="请输入密码" autocomplete="off"
-                   class="layui-input">
-        </div>
-        <div class="layui-form-mid layui-word-aux">请务必填写用户名</div>
-    </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品数量</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="num" lay-verify="required|number"  placeholder="请输入数量"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
 
-    <div class="layui-form-item" pane>
-        <label class="layui-form-label">开关开</label>
-        <div class="layui-input-block">
-            <input type="checkbox" checked name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-            <input type="checkbox" name="open2" lay-skin="switch" lay-filter="switchTest" lay-text="已绑定|绑定">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品条码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="barcode" lay-verify="required|number" required placeholder="请输入条形码"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图片上传</label>
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" id="test1">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品描述</label>
+                    <div class="layui-input-block">
+                        <textarea id="editor" name="itemDesc" type="text/plain" style="width: 1000px ; height: 500px"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </form>
 
-<br><br><br>
-
-
 <script src="../layui.js"></script>
-<!-- <script src="../build/lay/dest/layui.all.js"></script> -->
+<script src="../js/common.js"></script>
+<script src="../lib/ueditor/ueditor.config.js"></script>
+<script src="../lib/ueditor/ueditor.all.js"></script>
+</body>
 
 <script>
-
-    layui.use('form', function () {
+    layui.use(['element','upload','form','layer'], function () {
+        var element = layui.element;
+        var upload = layui.upload;
         var form = layui.form;
+        var layer = layui.layer;
+
+        //渲染富文本编辑器
+        var ue = UE.getEditor('editor');
+
+        //图片上传
+        var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url: '/upload/' //上传接口
+            ,done: function(res){
+                //上传完毕回调
+            }
+            ,error: function(){
+               alert(123);
+            }
+        });
 
         //自定义验证规则
         form.verify({
-            title: function (value) {
-                if (value.length < 5) {
+            title: function(value){
+                if(value.length < 5){
                     return '标题也太短了吧';
                 }
             }
-            , pass: [/(.+){6,12}$/, '密码必须6到12位']
-            , money: [
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,money: [
                 /^\d+\.\b\d{2}\b$/
-                , '金额必须为小数保留两位'
+                ,'金额必须为小数保留两位'
             ]
         });
 
-        //初始赋值
-        form.val('first', {
-            'title': '测试'
-            , 'phone': 11111111111
-            , 'email': 'xu@sentsin.com'
-            , 'password': 123123
-            , 'quiz': 2
-            , 'interest': 3
-            , 'like[write]': true
-            //,'open': false
-            , 'sex': '男'
-            , 'desc': 'form 是我们非常看重的一块'
-        });
-
-
-        //事件监听
-        form.on('select', function (data) {
-            console.log('select: ', this, data);
-        });
-
-        form.on('select(quiz)', function (data) {
-            console.log('select.quiz：', this, data);
-        });
-
-        form.on('select(interest)', function (data) {
-            console.log('select.interest: ', this, data);
-        });
-
-
-        form.on('checkbox', function (data) {
-            console.log(this.checked, data.elem.checked);
-        });
-
-        form.on('switch', function (data) {
-            console.log(data);
-        });
-
-        form.on('radio', function (data) {
-            console.log(data);
-        });
-
         //监听提交
-        form.on('submit(*)', function (data) {
-            console.log(data)
-            alert(JSON.stringify(data.field));
+        form.on('submit(*)', function(data){
+            console.log(data);
+            $.post('/item/save',data.field,function(result){
+                if(result.code){
+                    layer.msg('添加成功');
+                }
+            });
             return false;
         });
 
     });
-
 </script>
 
-<script>
-    layui.use('jquery', function () {
-        var $ = layui.jquery;
-        var submit = function () {
-            return false;
-        };
-        $('#test').on('submit', function () {
-            return false
-        });
-        $('#test').on('submit', function () {
-            return true
-        });
-    });
-</script>
-</body>
+
 </html>

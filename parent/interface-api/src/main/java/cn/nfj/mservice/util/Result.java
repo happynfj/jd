@@ -48,7 +48,6 @@ public class Result implements Serializable {
         return this.map;
     }
 
-
     public HashMap page(List list, long count) {
         this.map.put("data", list);
         this.map.put("count", count);

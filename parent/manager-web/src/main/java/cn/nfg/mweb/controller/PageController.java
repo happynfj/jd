@@ -1,6 +1,8 @@
 package cn.nfg.mweb.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -37,7 +39,9 @@ public class PageController {
     }
 
     @RequestMapping("item/pageAdd")
-    public String itemAdd(){
+    public String itemAdd(String id,String isEdit,Model model){
+        model.addAttribute("id",id);
+        model.addAttribute("isEdit",isEdit);
         return "item/add";
     }
 
