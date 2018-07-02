@@ -2,6 +2,7 @@ package cn.nfj.mservice;
 
 import cn.nfj.mservice.entity.DataGridResult;
 import cn.nfj.mservice.entity.TbItem;
+import cn.nfj.mservice.param.ItemSaveParam;
 import cn.nfj.mservice.util.Result;
 
 import java.util.HashMap;
@@ -18,5 +19,5 @@ public interface ItemService {
 
     void itemDel(String id);
 
-    void itemSave(TbItem item);
+    void itemSave(ItemSaveParam isp);
 }

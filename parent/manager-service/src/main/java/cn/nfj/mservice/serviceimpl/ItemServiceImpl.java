@@ -2,9 +2,12 @@ package cn.nfj.mservice.serviceimpl;
 
 import cn.nfj.mservice.ItemService;
 import cn.nfj.mservice.entity.TbItem;
+import cn.nfj.mservice.entity.TbItemDesc;
 import cn.nfj.mservice.entity.TbItemExample;
 import cn.nfj.mservice.dto.TbItemDto;
+import cn.nfj.mservice.mapper.TbItemDescMapper;
 import cn.nfj.mservice.mapper.TbItemMapper;
+import cn.nfj.mservice.param.ItemSaveParam;
 import cn.nfj.mservice.util.Result;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,6 +30,8 @@ public class ItemServiceImpl implements ItemService{
 
     @Autowired
     TbItemMapper itemMapper;
+    @Autowired
+    TbItemDescMapper itemDescMapper;
 
     @Override
     public TbItem getItemByID(String id) {
@@ -40,12 +46,11 @@ public class ItemServiceImpl implements ItemService{
         //执行查询
         TbItemExample example = new TbItemExample();
         List<TbItem> list = itemMapper.selectByExample(example);
+        Integer count = itemMapper.selectCount();
         //格式化时间
         List<TbItemDto> voList = TbItemToVo(list);
         //取分页结果
         PageInfo<TbItemDto> pageInfo = new PageInfo<>(voList);
-        //取总记录数
-        long count = pageInfo.getTotal();
         return new Result().page(voList, count);
     }
 
@@ -55,8 +60,14 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public void itemSave(TbItem item) {
-
+    public void itemSave(ItemSaveParam isp) {
+        TbItem item = TbItem.builder().barcode(isp.getBarcode()).cid(isp.getCid()).num(isp.getNum()).title(isp.getTitle()).
+                sellPoint(isp.getSellPoint()).price(isp.getPrice()).created(new Date()).updated(new Date()).build();
+        itemMapper.insertSelective(item);
+        //查询最新ID
+        Long newId = itemMapper.selectNewId();
+        TbItemDesc itemDesc = TbItemDesc.builder().itemDesc(isp.getItemDesc()).itemId(newId).created(new Date()).updated(new Date()).build();
+        itemDescMapper.insertSelective(itemDesc);
     }
 
     /**
