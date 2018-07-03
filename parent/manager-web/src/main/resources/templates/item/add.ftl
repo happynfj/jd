@@ -13,6 +13,7 @@
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="../jquery.ztree.all.js"></script>
     <link rel="stylesheet" href="../css/layui.css">
+    <link rel="stylesheet" href="../lib/kindeditor/themes/default/default.css">
 
     <style>
         body {
@@ -30,7 +31,7 @@
     <input type="hidden"/>
 </div>-->
 
-<form class="layui-form layui-form-pane1" action="" lay-filter="first">
+<form class="layui-form layui-form-pane1" action="" lay-filter="first" id="addForm">
     <div class="layui-tab">
         <div class="layui-tab-title">
             <li><a href="/item/pageList">商品列表</a></li>
@@ -113,7 +114,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">商品描述</label>
                     <div class="layui-input-block">
-                        <textarea id="editor" name="itemDesc" type="text/plain" style="width: 1000px ; height: 500px"></textarea>
+                        <textarea style="width:800px;height:300px;visibility:hidden;" name="itemDesc" id="editor_id"></textarea>
                     </div>
                 </div>
 
@@ -131,7 +132,7 @@
 
 <script src="../layui.js"></script>
 <script src="../js/common.js"></script>
-<script src="../lib/ueditor/ueditor.config.js"></script>
+<script src="../lib/kindeditor/kindeditor-all.js"></script>
 <script src="../lib/ueditor/ueditor.all.js"></script>
 </body>
 
@@ -141,22 +142,55 @@
         var upload = layui.upload;
         var form = layui.form;
         var layer = layui.layer;
-
+        var editor;
         //渲染富文本编辑器
-        var ue = UE.getEditor('editor');
+        KindEditor.ready(function(K) {
+            editor = K.create('#editor_id', {
+                uploadJson : '/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '/kindeditor/jsp/file_manager_json.jsp',
+                allowFileManager : true
+            });
+        });
 
-        alert(${id});
 
         //图片上传
-        var uploadInst = upload.render({
+        /*var uploadInst = upload.render({
             elem: '#test1' //绑定元素
-            ,url: '/upload/' //上传接口
+            ,url: '/item/uploadImg' //上传接口
+            ,multiple: true
             ,done: function(res){
                 //上传完毕回调
             }
             ,error: function(){
                alert(123);
             }
+        });*/
+
+        var uploadPram={
+            //指定上传文件参数名称
+            filePostName  : "uploadFile",
+            //指定上传文件请求的url。
+            uploadJson : '/item/uploadImg',
+            //上传类型，分别为image、flash、media、file
+            dir : "image"
+        };
+
+        //editor图片上传组件
+        $('#test1').click(function () {
+            alert(123);
+            var form  = $('#addForm');
+            KindEditor.editor(uploadPram).loadPlugin('multiimage',function () {
+                var editor = this;
+                editor.plugin.multiImageDialog({
+                    clickFn : function (urlList) {
+                        var imgArr = [];
+                        KindEditor.each(urlList,function (i, data) {
+                            imgArr = data.url;
+                            alert(data.url);
+                        })
+                    }
+                });
+            })
         });
 
         //自定义验证规则
@@ -175,7 +209,11 @@
 
         //监听提交
         form.on('submit(*)', function(data){
-            console.log(data);
+            console.log(data.field);
+            editor.sync();
+            var desc = $('#editor_id').val();
+            alert(desc);
+            data.field.itemDesc = desc;
             $.post('/item/save',data.field,function(result){
                 if(result.code){
                     layer.msg('添加成功');
