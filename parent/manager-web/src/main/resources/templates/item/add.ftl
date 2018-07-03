@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" type="text/css" href="../css/ztree/zTreeStyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/ztree/zTreeStyle.css" />
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="../jquery.ztree.all.js"></script>
     <link rel="stylesheet" href="../css/layui.css">
@@ -32,6 +32,23 @@
 </div>-->
 
 <form class="layui-form layui-form-pane1" action="" lay-filter="first" id="addForm">
+    <div class="layui-tab">
+        <div class="layui-tab-title">
+            <li><a href="/item/pageList">商品列表</a></li>
+            <li class="layui-this">
+                <#if isEdit=='1'>
+                    编辑商品
+                    <#else>
+                    增加商品
+                </#if>
+            </li>
+        </div>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item"></div>
+            <div class="layui-tab-item layui-show">
+</div>-->
+
+<form class="layui-form layui-form-pane1" action="" lay-filter="first">
     <div class="layui-tab">
         <div class="layui-tab-title">
             <li><a href="/item/pageList">商品列表</a></li>
@@ -114,6 +131,30 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">商品描述</label>
                     <div class="layui-input-block">
+                        <textarea id="editor" name="itemDesc" type="text/plain" style="width: 1000px ; height: 500px"></textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+
+            </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图片上传</label>
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" id="test1">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品描述</label>
+                    <div class="layui-input-block">
                         <textarea style="width:800px;height:300px;visibility:hidden;" name="itemDesc" id="editor_id"></textarea>
                     </div>
                 </div>
@@ -132,9 +173,65 @@
 
 <script src="../layui.js"></script>
 <script src="../js/common.js"></script>
+<script src="../lib/ueditor/ueditor.config.js"></script>
+<script src="../lib/ueditor/ueditor.all.js"></script>
 <script src="../lib/kindeditor/kindeditor-all.js"></script>
 <script src="../lib/ueditor/ueditor.all.js"></script>
 </body>
+
+<script>
+    layui.use(['element','upload','form','layer'], function () {
+        var element = layui.element;
+        var upload = layui.upload;
+        var form = layui.form;
+        var layer = layui.layer;
+
+        //渲染富文本编辑器
+        var ue = UE.getEditor('editor');
+
+        alert(${id});
+
+        //图片上传
+        var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            ,url: '/upload/' //上传接口
+            ,done: function(res){
+                //上传完毕回调
+            }
+            ,error: function(){
+               alert(123);
+            }
+        });
+
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题也太短了吧';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,money: [
+                /^\d+\.\b\d{2}\b$/
+                ,'金额必须为小数保留两位'
+            ]
+        });
+
+        //监听提交
+        form.on('submit(*)', function(data){
+            console.log(data);
+            $.post('/item/save',data.field,function(result){
+                if(result.code){
+                    layer.msg('添加成功');
+                }
+            });
+            return false;
+        });
+
+    });
+</script>
+
+
 
 <script>
     layui.use(['element','upload','form','layer'], function () {
