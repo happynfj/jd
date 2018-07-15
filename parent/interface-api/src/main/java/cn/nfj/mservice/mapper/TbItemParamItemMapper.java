@@ -2,24 +2,16 @@ package cn.nfj.mservice.mapper;
 
 
 import cn.nfj.mservice.entity.TbItemParamItem;
-import cn.nfj.mservice.entity.TbItemParamItemExample;
 
 import java.util.List;
 
 public interface TbItemParamItemMapper {
-    int countByExample(TbItemParamItemExample example);
-
-    int deleteByExample(TbItemParamItemExample example);
 
     int deleteByPrimaryKey(Long id);
 
     int insert(TbItemParamItem record);
 
     int insertSelective(TbItemParamItem record);
-
-    List<TbItemParamItem> selectByExampleWithBLOBs(TbItemParamItemExample example);
-
-    List<TbItemParamItem> selectByExample(TbItemParamItemExample example);
 
     TbItemParamItem selectByPrimaryKey(Long id);
 /*

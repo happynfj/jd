@@ -1,6 +1,7 @@
 package cn.nfg.mweb.controller;
 
 import cn.nfj.mservice.ItemService;
+import cn.nfj.mservice.dto.TbItemEditDto;
 import cn.nfj.mservice.entity.DataGridResult;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.param.ItemSaveParam;
@@ -25,13 +26,14 @@ public class ItemController {
     private ItemService itemService;
 
     @RequestMapping("/list")
-    public Object getItemList(Integer page, Integer limit){
-        return  itemService.getItemList(page,limit);
+    public Object getItemList(Integer page, Integer limit,TbItem item){
+        return  itemService.getItemList(page,limit,item);
     }
 
-    @RequestMapping("/page/{id}")
-    public TbItem selectItemById(String id){
-        return itemService.getItemByID(id);
+    @RequestMapping("/getItem")
+    public Object selectItemById(String id){
+        TbItem item = itemService.getItemByID(id);
+        return Result.Success(item);
     }
 
     @RequestMapping("/del")
@@ -42,7 +44,26 @@ public class ItemController {
 
     @RequestMapping("/save")
     public Object itemSave(ItemSaveParam itemSaveParam){
-        itemService.itemSave(itemSaveParam);
+       // itemService.itemSave(itemSaveParam);
+        itemService.itemUpdate(itemSaveParam);
+        return Result.Success();
+    }
+
+    /**
+     * 获取编辑页面值
+     */
+    @RequestMapping("/getItemEditDto")
+    public Object getItemEditDto(String id){
+        TbItemEditDto dto = itemService.getItemEditDto(id);
+        return Result.Success(dto);
+    }
+
+    /**
+     * 修改商品
+     */
+    @RequestMapping("/itemUpdate")
+    public Object itemUpdate(TbItemEditDto dto){
+        //itemService.itemUpdate(dto);
         return Result.Success();
     }
 

@@ -12,4 +12,8 @@ import java.util.List;
  */
 public interface ItemCatService {
     List<ItemCatTreeDto> getAll();
+
+    void nodeEdit(TbItemCat cat);
+
+    void dalate(long id);
 }

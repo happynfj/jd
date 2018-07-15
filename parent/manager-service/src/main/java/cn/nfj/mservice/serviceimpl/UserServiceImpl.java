@@ -1,7 +1,9 @@
 package cn.nfj.mservice.serviceimpl;
 
 import cn.nfj.mservice.UserService;
-import cn.nfj.mservice.entity.User;
+import cn.nfj.mservice.entity.TbUser;
+import cn.nfj.mservice.mapper.TbUserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,11 +13,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    private TbUserMapper userMapper;
+
     @Override
-    public User getUser() {
-        User user = new User();
-        user.setUsername("nifangjie");
-        user.setPassword("password");
-        return user;
+    public TbUser getPassword(String username) {
+        return userMapper.getPassword(username);
     }
 }

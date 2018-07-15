@@ -2,14 +2,10 @@ package cn.nfj.mservice.mapper;
 
 
 import cn.nfj.mservice.entity.TbUser;
-import cn.nfj.mservice.entity.TbUserExample;
 
 import java.util.List;
 
 public interface TbUserMapper {
-    int countByExample(TbUserExample example);
-
-    int deleteByExample(TbUserExample example);
 
     int deleteByPrimaryKey(Long id);
 
@@ -17,17 +13,11 @@ public interface TbUserMapper {
 
     int insertSelective(TbUser record);
 
-    List<TbUser> selectByExample(TbUserExample example);
-
     TbUser selectByPrimaryKey(Long id);
-/*
-
-    int updateByExampleSelective(@Param("record") TbUser record, @Param("example") TbUserExample example);
-
-    int updateByExample(@Param("record") TbUser record, @Param("example") TbUserExample example);
-*/
 
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
+
+    TbUser getPassword(String username);
 }

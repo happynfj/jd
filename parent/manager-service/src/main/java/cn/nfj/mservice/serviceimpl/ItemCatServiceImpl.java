@@ -11,6 +11,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,5 +36,23 @@ public class ItemCatServiceImpl implements ItemCatService {
             }
         }
         return dtoList;
+    }
+
+    @Override
+    public void nodeEdit(TbItemCat cat) {
+        //修改
+        if(cat.getId() != null){
+            cat.setUpdated(new Date());
+            tbItemCatMapper.updateByPrimaryKey(cat);
+        }else {
+            cat.setCreated(new Date());
+            cat.setUpdated(new Date());
+            tbItemCatMapper.insertSelective(cat);
+        }
+    }
+
+    @Override
+    public void dalate(long id) {
+        tbItemCatMapper.deleteByPrimaryKey(id);
     }
 }

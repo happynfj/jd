@@ -1,5 +1,6 @@
 package cn.nfj.mservice;
 
+import cn.nfj.mservice.dto.TbItemEditDto;
 import cn.nfj.mservice.entity.DataGridResult;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.param.ItemSaveParam;
@@ -15,9 +16,11 @@ import java.util.HashMap;
 public interface ItemService {
     TbItem getItemByID(String id);
 
-    HashMap getItemList(int page, int rows);
+    HashMap getItemList(int page, int rows,TbItem item);
 
     void itemDel(String id);
 
-    void itemSave(ItemSaveParam isp);
+    TbItemEditDto getItemEditDto(String id);
+
+    void itemUpdate(ItemSaveParam dto);
 }

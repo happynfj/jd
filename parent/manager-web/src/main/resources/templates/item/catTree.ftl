@@ -52,7 +52,18 @@
                 }
             },
             callback:{
-                onClick:handlerClick
+                onClick:handlerClick, //点击事件
+                beforeRemove: beforeRemove,
+                beforeRename: beforeRename
+            },
+            edit: {
+                enable: true
+            },
+            view: {
+                expandSpeed: "",
+                addHoverDom: addHoverDom,
+                removeHoverDom: removeHoverDom,
+                selectedMulti: false
             }
         };
         $.post('/itemCat/all', function (result) {
@@ -76,6 +87,40 @@
         function handlerClick(e,treeId,treeNode){
             $('#ipt').val(treeNode.name);
             $('#ipt').attr("data-id",treeNode.id);
+        }
+
+        var newCount = 1;
+        function addHoverDom(treeId, treeNode) {
+            var sObj = $("#" + treeNode.tId + "_span");
+            if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+            var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
+                    + "' title='add node' onfocus='this.blur();' ></span>";
+            sObj.after(addStr);
+            var btn = $("#addBtn_" + treeNode.tId);
+            if (btn) btn.bind("click", function () {
+                var zTree = $.fn.zTree.getZTreeObj("ztree1");
+                zTree.addNodes(treeNode, { id: (treeNode.id + newCount), parentid: treeNode.id, name: "new node" + (newCount++) });
+                return false;
+            });
+        }
+
+        function removeHoverDom(treeId, treeNode) {
+            $("#addBtn_" + treeNode.tId).unbind().remove();
+        }
+
+        function beforeRemove(treeId, treeNode) {
+            var zTree = $.fn.zTree.getZTreeObj("ztree1");
+            zTree.selectNode(treeNode);
+            alert(treeNode.Action);//哈哈 出来了
+            return confirm("确认删除 节点 -- " + treeNode.name + " 吗？");
+        }
+
+        function beforeRename(treeId, treeNode, newName) {
+            if (newName.length == 0) {
+                alert("节点名称不能为空!");
+                return false;
+            }
+            return true;
         }
     });
 </script>

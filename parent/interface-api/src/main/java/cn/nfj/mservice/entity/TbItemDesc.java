@@ -1,9 +1,13 @@
 package cn.nfj.mservice.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TbItemDesc {
     private Long itemId;
 

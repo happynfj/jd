@@ -2,14 +2,10 @@ package cn.nfj.mservice.mapper;
 
 
 import cn.nfj.mservice.entity.TbItemDesc;
-import cn.nfj.mservice.entity.TbItemDescExample;
 
 import java.util.List;
 
 public interface TbItemDescMapper {
-    int countByExample(TbItemDescExample example);
-
-    int deleteByExample(TbItemDescExample example);
 
     int deleteByPrimaryKey(Long itemId);
 
@@ -17,9 +13,6 @@ public interface TbItemDescMapper {
 
     int insertSelective(TbItemDesc record);
 
-    List<TbItemDesc> selectByExampleWithBLOBs(TbItemDescExample example);
-
-    List<TbItemDesc> selectByExample(TbItemDescExample example);
 
     TbItemDesc selectByPrimaryKey(Long itemId);
 /*

@@ -29,6 +29,6 @@ function openLayer(url) {
 $('#gobtn').click(function () {
     var url=$(this).attr('data-url');
     var id = $(this).attr('id');
-    window.location.href=url+"?id="+id+"&isEdit=0";
+    window.location.href=url+"?id=2&isEdit=0";
     return false;
 });

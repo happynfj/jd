@@ -42,16 +42,38 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table schema="" tableName="sys_acl"></table>
-		<table schema="" tableName="sys_acl_module"></table>
+		<!--<table schema="" tableName="sys_acl"></table>
+		<table schema="" tableName="sys_acl_module"></table>-->
 		<!--<table schema="" tableName="sys_dept"></table>-->
-		<table schema="" tableName="sys_log"></table>
+		<!--<table schema="" tableName="sys_log"></table>
 		<table schema="" tableName="sys_role_acl"></table>
 		<table schema="" tableName="sys_role_user"></table>
-		<table schema="" tableName="sys_user"></table>
+		<table schema="" tableName="sys_user"></table>-->
 		<!--<table schema="" tableName="tb_order_item"></table>
 		<table schema="" tableName="tb_order_shipping"></table>
 		<table schema="" tableName="tb_user"></table>-->
 
+
+		<!--没有Example类-->
+		<!--<table tableName="sys_user" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+			<generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
+		</table>
+		<table tableName="sys_button" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
+		</table>
+		<table tableName="sys_menu" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
+		</table>
+		<table tableName="sys_role" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
+		</table>-->
+		<table tableName="sys_menu" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
+		</table>
 	</context>
 </generatorConfiguration>

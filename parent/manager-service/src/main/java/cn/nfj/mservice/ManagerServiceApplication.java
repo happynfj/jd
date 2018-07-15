@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @MapperScan("cn.nfj.mservice.mapper")
-@ImportResource("classpath:config/dubbo.xml")
+@ImportResource(locations = {"classpath:config/dubbo.xml","classpath:config/mybatis-config.xml"})
 public class ManagerServiceApplication {
 
 	public static void main(String[] args) {

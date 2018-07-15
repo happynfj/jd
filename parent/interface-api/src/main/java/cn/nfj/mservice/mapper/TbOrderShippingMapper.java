@@ -2,14 +2,10 @@ package cn.nfj.mservice.mapper;
 
 
 import cn.nfj.mservice.entity.TbOrderShipping;
-import cn.nfj.mservice.entity.TbOrderShippingExample;
 
 import java.util.List;
 
 public interface TbOrderShippingMapper {
-    int countByExample(TbOrderShippingExample example);
-
-    int deleteByExample(TbOrderShippingExample example);
 
     int deleteByPrimaryKey(String orderId);
 
@@ -17,7 +13,6 @@ public interface TbOrderShippingMapper {
 
     int insertSelective(TbOrderShipping record);
 
-    List<TbOrderShipping> selectByExample(TbOrderShippingExample example);
 
     TbOrderShipping selectByPrimaryKey(String orderId);
 

@@ -4,12 +4,8 @@ package cn.nfj.mservice.mapper;
 import java.util.List;
 
 import cn.nfj.mservice.entity.TbItem;
-import cn.nfj.mservice.entity.TbItemExample;
 
 public interface TbItemMapper {
-    int countByExample(TbItemExample example);
-
-    int deleteByExample(TbItemExample example);
 
     int deleteByPrimaryKey(Long id);
 
@@ -17,13 +13,7 @@ public interface TbItemMapper {
 
     int insertSelective(TbItem record);
 
-    List<TbItem> selectByExample(TbItemExample example);
-
     TbItem selectByPrimaryKey(Long id);
-
-/*    int updateByExampleSelective(@Param("record") TbItem record, @Param("example") TbItemExample example);
-
-    int updateByExample(@Param("record") TbItem record, @Param("example") TbItemExample example);*/
 
     int updateByPrimaryKeySelective(TbItem record);
 
@@ -32,4 +22,9 @@ public interface TbItemMapper {
     Long selectNewId();
 
     Integer selectCount();
+
+    /**
+     * 条件查询item
+     */
+    List<TbItem> selectItemByCondition(TbItem item);
 }

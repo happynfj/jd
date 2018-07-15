@@ -1,6 +1,6 @@
 package cn.nfj.mservice;
 
-import cn.nfj.mservice.entity.User;
+import cn.nfj.mservice.entity.TbUser;
 
 /**
  * @Auther: Administrator
@@ -8,5 +8,7 @@ import cn.nfj.mservice.entity.User;
  * @Description:
  */
 public interface UserService {
-    User getUser();
+    //User getUser();
+
+    TbUser getPassword(String username);
 }
