@@ -1,6 +1,6 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.mall;
 
-import cn.nfj.mservice.ItemContentService;
+import cn.nfj.mservice.service.mall.ItemContentService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

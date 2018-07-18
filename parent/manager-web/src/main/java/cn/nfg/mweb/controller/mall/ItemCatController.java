@@ -1,20 +1,14 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.mall;
 
-import cn.nfj.mservice.ItemCatService;
+import cn.nfj.mservice.service.mall.ItemCatService;
 import cn.nfj.mservice.dto.ItemCatTreeDto;
-import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.entity.TbItemCat;
 import cn.nfj.mservice.util.Result;
 import com.alibaba.dubbo.config.annotation.Reference;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Auther: Administrator

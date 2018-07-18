@@ -1,12 +1,10 @@
 package cn.nfg.mweb.controller;
 
-import cn.nfj.mservice.ItemService;
+import cn.nfj.mservice.service.mall.ItemService;
 import cn.nfj.mservice.dto.TbItemEditDto;
 import com.alibaba.dubbo.config.annotation.Reference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -18,11 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
     @Reference
     private ItemService itemService;
-
-   /* @RequestMapping("/")
-    public String index() {
-        return "index";
-    }*/
 
     /**
      * 欢迎页
@@ -77,5 +70,15 @@ public class PageController {
         return "dept/dept";
     }
 
+//==============================SYS  Begin=============================
+
+    /**
+     * 在线用户列表
+     */
+    @RequestMapping("user/online")
+    public String userOnline() {
+        return "sys/user-online";
+    }
+//==========================SYS  End=================================
 
 }

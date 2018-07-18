@@ -1,6 +1,6 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.sys;
 
-import cn.nfj.mservice.MenuService;
+import cn.nfj.mservice.service.sys.MenuService;
 import cn.nfj.mservice.dto.MenuDto;
 import cn.nfj.mservice.entity.SysMenu;
 import cn.nfj.mservice.util.Result;
@@ -8,7 +8,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

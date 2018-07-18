@@ -1,8 +1,7 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.sys;
 
-import cn.nfj.mservice.SysTreeService;
+import cn.nfj.mservice.service.sys.SysTreeService;
 import cn.nfj.mservice.dto.DeptLevelDto;
-import cn.nfj.mservice.util.JsonData;
 import cn.nfj.mservice.util.Result;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;

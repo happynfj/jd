@@ -1,10 +1,9 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.mall;
 
-import cn.nfj.mservice.ItemCatService;
+import cn.nfj.mservice.service.mall.ItemCatService;
 import cn.nfj.mservice.dto.ItemCatTreeDto;
 import cn.nfj.mservice.entity.TbItemCat;
 import cn.nfj.mservice.mapper.TbItemCatMapper;
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;

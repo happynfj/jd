@@ -1,6 +1,6 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.sys;
 
-import cn.nfj.mservice.SysTreeService;
+import cn.nfj.mservice.service.sys.SysTreeService;
 import cn.nfj.mservice.dto.DeptLevelDto;
 import cn.nfj.mservice.entity.SysDept;
 import cn.nfj.mservice.mapper.SysDeptMapper;

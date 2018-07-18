@@ -1,6 +1,6 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.mall;
 
-import cn.nfj.mservice.ItemContentService;
+import cn.nfj.mservice.service.mall.ItemContentService;
 import cn.nfj.mservice.dto.ItemContentTreeDto;
 import cn.nfj.mservice.entity.TbContentCategory;
 import cn.nfj.mservice.mapper.TbContentCategoryMapper;

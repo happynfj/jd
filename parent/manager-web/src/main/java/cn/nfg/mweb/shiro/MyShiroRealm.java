@@ -1,8 +1,7 @@
 package cn.nfg.mweb.shiro;
 
-import cn.nfj.mservice.UserService;
+import cn.nfj.mservice.service.sys.UserService;
 import cn.nfj.mservice.entity.TbUser;
-import cn.nfj.mservice.mapper.TbUserMapper;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -11,7 +10,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Auther: Administrator
@@ -38,7 +36,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         user = new TbUser();
         user.setUsername("admin");
         user.setPassword("admin");
-        return new SimpleAuthenticationInfo(user, user.getPassword(), this.getClass().getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(),getName());
     }
 
     /**

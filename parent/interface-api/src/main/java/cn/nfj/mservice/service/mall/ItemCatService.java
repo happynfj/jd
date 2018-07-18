@@ -1,4 +1,4 @@
-package cn.nfj.mservice;
+package cn.nfj.mservice.service.mall;
 
 import cn.nfj.mservice.dto.ItemCatTreeDto;
 import cn.nfj.mservice.entity.TbItemCat;
