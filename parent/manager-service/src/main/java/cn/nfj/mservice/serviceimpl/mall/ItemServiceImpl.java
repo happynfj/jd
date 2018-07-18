@@ -1,6 +1,6 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.mall;
 
-import cn.nfj.mservice.ItemService;
+import cn.nfj.mservice.service.mall.ItemService;
 import cn.nfj.mservice.dto.TbItemEditDto;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.entity.TbItemCat;

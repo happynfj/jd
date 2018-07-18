@@ -11,5 +11,5 @@
 
     <!--<dubbo:reference interface="cn.nfj.mservice.SysTreeService" id="sysTreeService" />-->
 
-    <dubbo:annotation package="cn.nfg.mweb.controller" />
+    <dubbo:annotation package="cn.nfg.mweb.controller,cn.nfg.mweb.controller.mall,cn.nfg.mweb.controller.sys" />
 </beans>

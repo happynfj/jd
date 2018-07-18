@@ -63,6 +63,13 @@
             <version>1.4.0</version>
         </dependency>
 
+
+        <!--获取客户端浏览器信息和客户端的操作系统-->
+        <dependency>
+            <groupId>nl.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.2.4</version>
+        </dependency>
     </dependencies>
 
     <!--依赖版本管理-->

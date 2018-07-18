@@ -1,4 +1,4 @@
-package cn.nfj.mservice;
+package cn.nfj.mservice.service.mall;
 
 import java.util.List;
 

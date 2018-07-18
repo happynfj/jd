@@ -71,7 +71,7 @@
 			   enableSelectByExample="false" selectByExampleQueryId="false" >
 			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
 		</table>-->
-		<table tableName="sys_menu" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+		<table tableName="sys_user" schema="" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false" >
 			<generatedKey column="sceneId" sqlStatement="Mysql" identity="true"/>
 		</table>

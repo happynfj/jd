@@ -1,6 +1,6 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.sys;
 
-import cn.nfj.mservice.UserService;
+import cn.nfj.mservice.service.sys.UserService;
 import cn.nfj.mservice.entity.TbUser;
 import cn.nfj.mservice.mapper.TbUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;

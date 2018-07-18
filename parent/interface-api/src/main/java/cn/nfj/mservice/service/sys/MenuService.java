@@ -1,4 +1,4 @@
-package cn.nfj.mservice;
+package cn.nfj.mservice.service.sys;
 
 import cn.nfj.mservice.dto.MenuDto;
 import cn.nfj.mservice.dto.MenuTreeDto;

@@ -1,4 +1,4 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.sys;
 
 import cn.nfj.mservice.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;

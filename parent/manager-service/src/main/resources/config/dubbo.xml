@@ -16,5 +16,5 @@
     <!--声明对外暴露的服务-->
     <!--<dubbo:service interface="cn.nfj.mservice.SysTreeService" ref="sysTreeServiceImpl" />-->
 
-    <dubbo:annotation package="cn.nfj.mservice.serviceimpl" />
+    <dubbo:annotation package="cn.nfj.mservice.serviceimpl.mall,cn.nfj.mservice.serviceimpl.sys" />
 </beans>

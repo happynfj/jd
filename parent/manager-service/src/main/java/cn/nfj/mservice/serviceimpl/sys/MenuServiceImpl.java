@@ -1,6 +1,6 @@
-package cn.nfj.mservice.serviceimpl;
+package cn.nfj.mservice.serviceimpl.sys;
 
-import cn.nfj.mservice.MenuService;
+import cn.nfj.mservice.service.sys.MenuService;
 import cn.nfj.mservice.dto.MenuDto;
 import cn.nfj.mservice.dto.MenuTreeDto;
 import cn.nfj.mservice.entity.SysMenu;

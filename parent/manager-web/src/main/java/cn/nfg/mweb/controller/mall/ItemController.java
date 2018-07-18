@@ -1,15 +1,12 @@
-package cn.nfg.mweb.controller;
+package cn.nfg.mweb.controller.mall;
 
-import cn.nfj.mservice.ItemService;
+import cn.nfj.mservice.service.mall.ItemService;
 import cn.nfj.mservice.dto.TbItemEditDto;
-import cn.nfj.mservice.entity.DataGridResult;
 import cn.nfj.mservice.entity.TbItem;
 import cn.nfj.mservice.param.ItemSaveParam;
 import cn.nfj.mservice.util.FilePath;
-import cn.nfj.mservice.param.ItemSaveParam;
 import cn.nfj.mservice.util.Result;
 import com.alibaba.dubbo.config.annotation.Reference;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
