@@ -36,10 +36,11 @@ public class Result implements Serializable {
         return map;
     }
 
-    public HashMap Error(String msg) {
-        this.map.put("code", -1);
-        this.map.put("message", msg);
-        return this.map;
+    public static HashMap Error(String msg) {
+        HashMap map = new HashMap();
+        map.put("code", -1);
+        map.put("message", msg);
+        return map;
     }
 
     public HashMap Warn(String msg) {

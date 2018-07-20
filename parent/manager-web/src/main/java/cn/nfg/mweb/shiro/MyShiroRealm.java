@@ -1,15 +1,13 @@
 package cn.nfg.mweb.shiro;
 
-import cn.nfj.mservice.service.sys.UserService;
-import cn.nfj.mservice.entity.TbUser;
+import cn.nfj.mservice.entity.SysUser;
+import cn.nfj.mservice.service.sys.SysUserService;
 import com.alibaba.dubbo.config.annotation.Reference;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @Auther: Administrator
@@ -18,24 +16,23 @@ import org.apache.shiro.subject.PrincipalCollection;
  */
 public class MyShiroRealm extends AuthorizingRealm {
 
-    @Reference
-    private UserService userService;
+    @Autowired
+    private SysUserService sysUserService;
     /**
      * 认证
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
-
-        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
-        String username = usernamePasswordToken.getUsername();
-        //TbUser user = userService.getPassword(username);
-        TbUser user = null;
-        if(username.equals("admin")){
-
+        String username = (String) token.getPrincipal();
+        SysUser user = sysUserService.selectUserByUsername(username);
+        if(user == null){
+            // 账号不存在
+            throw new UnknownAccountException();
         }
-        user = new TbUser();
-        user.setUsername("admin");
-        user.setPassword("admin");
+        if(!user.getStatus().equals(0) ){
+            // 账号被锁定
+            throw new LockedAccountException();
+        }
         return new SimpleAuthenticationInfo(user, user.getPassword(),getName());
     }
 

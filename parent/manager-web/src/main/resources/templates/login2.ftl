@@ -8,6 +8,7 @@
     <title>用户登录</title>
     <link rel="stylesheet" href="../css/layui.css"/>
     <link rel="stylesheet" href="../css/assets/css/login.css" media="all">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                                        class="layui-input">
                             </div>
                             <div class="layui-col-xs5" style="padding-left: 10px;">
-                                <img class="login-captcha" src="https://www.oschina.net/action/user/captcha">
+                                <img class="login-captcha" src="/assets/captcha">
                             </div>
                         </div>
                     </div>
@@ -80,7 +81,7 @@
 
 <script type="text/javascript" src="../layui.js"></script>
 <script>
-    layui.config({
+  /*  layui.config({
         base: 'module/'
     }).use(['config', 'form'], function () {
         var $ = layui.jquery;
@@ -90,26 +91,23 @@
         if (config.getToken()) {
             location.replace('./');
             return;
-        }
-
+        }*/
+  layui.use(['form', 'layedit', 'laydate'], function() {
+      var form = layui.form;
+      layer = layui.layer;
         // 表单提交
         form.on('submit(login-submit)', function (obj) {
             var field = obj.field;
-            field.grant_type = 'password';
-            field.scope = 'select';
-            field.client_id = 'client_2';
-            field.client_secret = '123456';
-
+            alert(JSON.stringify(field));
             layer.load(2);
             $.ajax({
-                url: config.base_server + 'oauth/token',
+                url: '/sys/login',
                 data: field,
                 type: 'POST',
                 dataType: 'JSON',
                 success: function (data) {
                     console.log(JSON.stringify(data));
-                    if (data.access_token) {
-                        config.putToken(data);
+                    if (data.code == 1) {
                         layer.msg('登录成功', {icon: 1}, function () {
                             location.replace('./');
                         });

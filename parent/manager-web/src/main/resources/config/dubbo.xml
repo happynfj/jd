@@ -11,5 +11,7 @@
 
     <!--<dubbo:reference interface="cn.nfj.mservice.SysTreeService" id="sysTreeService" />-->
 
-    <dubbo:annotation package="cn.nfg.mweb.controller,cn.nfg.mweb.controller.mall,cn.nfg.mweb.controller.sys" />
+    <dubbo:annotation package="cn.nfg.mweb.controller.mall,cn.nfg.mweb.controller.sys"/>
+
+    <dubbo:reference id="sysUserService" interface="cn.nfj.mservice.service.sys.SysUserService" timeout="6000" check="false" version="1.0"/>
 </beans>

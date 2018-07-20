@@ -62,7 +62,7 @@ public class PageController {
      */
     @RequestMapping("user/Pagelogin")
     public String loginPage() {
-        return "login";
+        return "login2";
     }
 
     @RequestMapping("dept/page")

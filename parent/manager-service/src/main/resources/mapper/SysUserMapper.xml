@@ -267,4 +267,11 @@
       remark = #{remark,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectUserByUsername" parameterType="cn.nfj.mservice.entity.SysUser" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from sys_user
+      where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
 </mapper>
